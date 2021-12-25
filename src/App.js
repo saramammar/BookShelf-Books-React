@@ -28,7 +28,8 @@ class BooksApp extends React.Component {
         <Routes>
           <Route path="/" element={<ListBooks books={books}
                                               onChangeShelf={this.updateShelf} />} />
-          <Route path="/search" element={<SearchBooks onChangeShelf={this.updateShelf} />} />
+          <Route path="/search" element={<SearchBooks shelfBooks={books} 
+                                                      onChangeShelf={this.updateShelf} />} />
         </Routes>
       </div>
     )

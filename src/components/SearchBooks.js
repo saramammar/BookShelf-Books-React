@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom'
 import SearchBooksResults from './SearchBooksResults'
 import * as BooksAPI from '../BooksAPI'
 
-function SearchBooks({ onChangeShelf }) {
+function SearchBooks({ shelfBooks, onChangeShelf }) {
     const [ query, setQuery ] = useState('');
     const [ books, setBooks ] = useState('');
 
-    const onSearch = (e) => {
+    const onSearch = async (e) => {
       setQuery(e.target.value);
       if (e.target.value) {
-        BooksAPI.search(e.target.value).then(books => setBooks(books))
+        const booksResult = await BooksAPI.search(e.target.value);
+        booksResult.length > 0 && booksResult.forEach(searchBook => {
+          let obj = shelfBooks.filter(shelfBook => searchBook.id == shelfBook.id);
+          if (obj.length > 0) {
+            searchBook.shelf = obj[0].shelf;
+          }
+        })
+        setBooks(booksResult)
       } else {
         setBooks('')
       }
