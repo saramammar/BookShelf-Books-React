@@ -1,6 +1,6 @@
 # MyReads Project
 
-This is the final assessment project for Udacity's React Fundamentals course. 
+This is the final assessment project for Udacity's React Fundamentals course. Book shelves and search functionality using React, React-router-dom, React Hooks, prop-types, JSX, and Udacity API.
 
 ## TL;DR
 
