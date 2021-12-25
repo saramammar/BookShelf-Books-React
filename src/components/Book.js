@@ -18,9 +18,7 @@ function Book({ book, onChangeShelf }) {
             </div>
             <div className="book-title">{book.title || ''}</div>
             <div className="book-authors">
-                {book.authors ? 
-                 book.authors.map( (author, i, arr) => i === arr.length - 1 ? author : author + ', ') : 
-                 ''}
+                {book.authors ? book.authors.join(', ') : ''}
             </div>
         </div>
     )

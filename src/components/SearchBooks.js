@@ -11,9 +11,10 @@ function SearchBooks({ shelfBooks, onChangeShelf }) {
       setQuery(e.target.value);
       if (e.target.value) {
         const booksResult = await BooksAPI.search(e.target.value);
+        
         booksResult.length > 0 && booksResult.forEach(searchBook => {
-          let sameBook = shelfBooks.filter(shelfBook => searchBook.id === shelfBook.id);
-          sameBook.length > 0 && (searchBook.shelf = sameBook[0].shelf);
+          let sameBook = shelfBooks.find(shelfBook => searchBook.id === shelfBook.id);
+          sameBook && (searchBook.shelf = sameBook.shelf);
         })
         setBooks(booksResult)
       } else {
