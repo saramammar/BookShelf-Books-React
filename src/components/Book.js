@@ -16,7 +16,11 @@ function Book({ book, onChangeShelf }) {
                 </div>
             </div>
             <div className="book-title">{book.title || ''}</div>
-            <div className="book-authors">{book.authors ? book.authors[0] : ''}</div>
+            <div className="book-authors">
+                {book.authors ? 
+                 book.authors.map( (author, i, arr) => i === arr.length - 1 ? author : author + ', ') : 
+                 ''}
+            </div>
         </div>
     )
 }
